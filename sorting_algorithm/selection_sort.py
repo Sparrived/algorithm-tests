@@ -10,7 +10,7 @@ https://upload.wikimedia.org/wikipedia/commons/9/94/Selection-Sort-Animation.gif
 时间复杂度： O(n^2)，额外空间复杂度： O(1)
 """
 
-from utils import swap_with_bit, get_array_info, UNSORTED_ARRAY
+from utils import *
 
 
 def selection_sort(arr: list) -> list:
@@ -59,4 +59,5 @@ def viewed_selection_sort(arr: list) -> list:
 
 
 if __name__ == "__main__":
+
     sorted_array = viewed_selection_sort(UNSORTED_ARRAY)

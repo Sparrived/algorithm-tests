@@ -10,7 +10,7 @@ https://upload.wikimedia.org/wikipedia/commons/thumb/0/0c/Bubble_sort_animation_
 时间复杂度： O(n^2)，额外空间复杂度： O(1)
 """
 
-from utils import swap_with_bit, get_array_info, UNSORTED_ARRAY
+from utils import *
 
 
 def bubble_sort(arr: list) -> list:

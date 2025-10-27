@@ -1,6 +1,5 @@
+import random
 from typing import Optional
-
-UNSORTED_ARRAY = [64, 25, 12, 22, 11, 90, 34, 78, 56]
 
 def swap_with_bit(arr: list, i: int, j: int) -> None:
     """使用位运算交换数组中两个索引位置的元素，异或运算速度较快且不需要额外空间
@@ -27,3 +26,21 @@ def get_array_info(arr: list) -> tuple[int, Optional[list]]:
     if not arr or len(arr) < 2: # arr没有元素或一个元素的情况下不需要排序
         return 0, None
     return len(arr), arr.copy()
+
+def get_random_array(size: int, min_value: int, max_value: int, seed: Optional[int] = None) -> list[int]:
+    """生成一个指定大小和范围的随机数组
+
+    Args:
+        size (int): 数组大小
+        min_value (int): 最小值
+        max_value (int): 最大值
+        seed (Optional[int]): 随机数种子
+
+    Returns:
+        list[int]: 生成的随机数组
+    """
+    if seed is not None:
+        random.seed(seed)
+    return [random.randint(min_value, max_value) for _ in range(size)]
+
+UNSORTED_ARRAY = get_random_array(10, 1, 100, seed=42)

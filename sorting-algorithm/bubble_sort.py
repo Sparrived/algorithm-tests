@@ -10,20 +10,9 @@ https://upload.wikimedia.org/wikipedia/commons/thumb/0/0c/Bubble_sort_animation_
 时间复杂度： O(n^2)，额外空间复杂度： O(1)
 """
 
-UNSORTED_ARRAY = [64, 25, 12, 22, 11, 90, 34, 78, 56]
+from utils import swap_with_bit, get_array_info
 
-def swap_with_bit(arr, i: int, j: int) -> None:
-    """使用位运算交换数组中两个索引位置的元素，异或运算速度较快且不需要额外空间
-    
-    Args:
-        arr (list): 数组
-        i (int): 第一个元素的索引
-        j (int): 第二个元素的索引
-    """
-    if i != j: # 避免i和j在同一个地址导致结果为0
-        arr[i] = arr[i] ^ arr[j]
-        arr[j] = arr[i] ^ arr[j]
-        arr[i] = arr[i] ^ arr[j]
+UNSORTED_ARRAY = [64, 25, 12, 22, 11, 90, 34, 78, 56]
 
 def bubble_sort(arr: list) -> list:
     """冒泡排序算法, 将数组按升序排序，返回排序后的数组
@@ -34,12 +23,14 @@ def bubble_sort(arr: list) -> list:
     Returns:
         排序后的数组
     """
-    n = len(arr)
+    n, arr_copy = get_array_info(arr)
+    if not arr_copy:
+        return arr
     for i in range(n):
         for j in range(0, n - i - 1): # 遍历未排序部分
-            if arr[j] > arr[j + 1]: # 如果当前元素大于下一个元素，交换它们
-                swap_with_bit(arr, j, j + 1)
-    return arr
+            if arr_copy[j] > arr_copy[j + 1]: # 如果当前元素大于下一个元素，交换它们
+                swap_with_bit(arr_copy, j, j + 1)
+    return arr_copy
 
 
 def viewed_bubble_sort(arr: list) -> list:
@@ -52,36 +43,31 @@ def viewed_bubble_sort(arr: list) -> list:
         排序后的数组
     """
     print(f"Initial Array: {arr}")
-    n = len(arr)
+    n, arr_copy = get_array_info(arr)
+    if not arr_copy:
+        return arr
     for i in range(n):
         for j in range(0, n - i - 1): # 遍历未排序部分
-            if arr[j] > arr[j + 1]: # 如果当前元素大于下一个元素，交换它们
-                swap_with_bit(arr, j, j + 1)
-        print(f"Step {i + 1}: {arr}") # 输出当前步骤和数组状态
-    return arr
+            if arr_copy[j] > arr_copy[j + 1]: # 如果当前元素大于下一个元素，交换它们
+                swap_with_bit(arr_copy, j, j + 1)
+        print(f"Step {i + 1}: {arr_copy}") # 输出当前步骤和数组状态
+    return arr_copy
 
 
 def optimized_bubble_sort(arr: list) -> list:
     """优化后的冒泡排序算法, 将数组按升序排序，返回排序后的数组。通过优化减少不必要的比较次数，使得算法在最佳情况下达到O(n)的时间复杂度。"""
-    n = len(arr)
+    n, arr_copy = get_array_info(arr)
+    if not arr_copy:
+        return arr
     for i in range(n):
         swapped = False
         for j in range(0, n - i - 1):
-            if arr[j] > arr[j + 1]:
-                swap_with_bit(arr, j, j + 1)
+            if arr_copy[j] > arr_copy[j + 1]:
+                swap_with_bit(arr_copy, j, j + 1)
                 swapped = True
         if not swapped:  # 如果本轮没有交换，提前结束
             break
-    return arr
+    return arr_copy
 
 if __name__ == "__main__":
-    import time
-
-    start_time = time.time()
-    sorted_array = bubble_sort(UNSORTED_ARRAY.copy())
-    end_time = time.time()
-    print(f"Sorted Array: {sorted_array}")
-    print(f"Time taken: {end_time - start_time:.6f} seconds")
-
-    print("\nVisualized Bubble Sort:")
-    viewed_bubble_sort(UNSORTED_ARRAY.copy())
+    viewed_bubble_sort(UNSORTED_ARRAY)

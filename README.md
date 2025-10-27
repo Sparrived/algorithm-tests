@@ -19,26 +19,22 @@
 
 ### 安装
 
+强烈推荐使用 [uv](https://github.com/astral-sh/uv) 管理 Python 环境与依赖
+
 ```bash
 # 克隆仓库
-git clone <your-repo-url>
+git clone https://github.com/Sparrived/algorithm-tests.git
 cd algorithm-tests
 
-# 创建虚拟环境（可选但推荐）
-python -m venv .venv
-
-# 激活虚拟环境
-# Windows PowerShell
-.\.venv\Scripts\Activate.ps1
-# Linux/Mac
-# source .venv/bin/activate
+# 推荐使用 uv 管理环境
+uv sync
 ```
 
 ### 运行示例
 
 ```bash
 # 运行选择排序示例
-python sorting-algorithm/selection_sort.py
+uv run sorting-algorithm/selection_sort.py
 ```
 
 ## 📚 目前学习进度
@@ -47,12 +43,12 @@ python sorting-algorithm/selection_sort.py
 
 - **排序算法 (sorting-algorithm)**
   - ✅ 选择排序 (Selection Sort)
+  - ✅ 冒泡排序 (Bubble Sort)
+  - ✅ 插入排序 (Insertion Sort)
 
 ### 📝 计划学习
 
 - 排序算法
-  - [ ] 冒泡排序 (Bubble Sort)
-  - [ ] 插入排序 (Insertion Sort)
   - [ ] 快速排序 (Quick Sort)
   - [ ] 归并排序 (Merge Sort)
   - [ ] 堆排序 (Heap Sort)
@@ -77,7 +73,11 @@ algorithm-tests/
 ├── README.md                      # 项目说明文档
 ├── pyproject.toml                 # 项目配置文件
 └── sorting-algorithm/             # 排序算法目录
-    └── selection_sort.py         # 选择排序实现
+  ├── README.md                 # 排序算法说明文档
+  ├── selection_sort.py         # 选择排序实现
+  ├── bubble_sort.py            # 冒泡排序实现
+  ├── insertion_sort.py         # 插入排序实现
+  └── utils.py                  # 工具函数
 ```
 
 ## 🤝 贡献

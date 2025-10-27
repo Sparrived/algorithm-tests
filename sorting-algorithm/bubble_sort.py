@@ -10,9 +10,8 @@ https://upload.wikimedia.org/wikipedia/commons/thumb/0/0c/Bubble_sort_animation_
 时间复杂度： O(n^2)，额外空间复杂度： O(1)
 """
 
-from utils import swap_with_bit, get_array_info
+from utils import swap_with_bit, get_array_info, UNSORTED_ARRAY
 
-UNSORTED_ARRAY = [64, 25, 12, 22, 11, 90, 34, 78, 56]
 
 def bubble_sort(arr: list) -> list:
     """冒泡排序算法, 将数组按升序排序，返回排序后的数组

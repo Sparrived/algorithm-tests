@@ -1,5 +1,6 @@
 from typing import Optional
 
+UNSORTED_ARRAY = [64, 25, 12, 22, 11, 90, 34, 78, 56]
 
 def swap_with_bit(arr: list, i: int, j: int) -> None:
     """使用位运算交换数组中两个索引位置的元素，异或运算速度较快且不需要额外空间

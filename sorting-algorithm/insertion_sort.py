@@ -10,9 +10,7 @@ https://upload.wikimedia.org/wikipedia/commons/thumb/e/ea/Insertion_sort_001.PNG
 时间复杂度： O(n^2)，额外空间复杂度： O(1)
 """
 
-from utils import swap_with_bit, get_array_info
-
-UNSORTED_ARRAY = [64, 25, 12, 22, 11, 90, 34, 78, 56]
+from utils import swap_with_bit, get_array_info, UNSORTED_ARRAY
 
 def insertion_sort(arr: list) -> list:
     """插入排序算法, 将数组按升序排序，返回排序后的数组的副本

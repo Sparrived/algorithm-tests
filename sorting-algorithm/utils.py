@@ -9,7 +9,7 @@ def swap_with_bit(arr: list, i: int, j: int) -> None:
         i (int): 第一个元素的索引
         j (int): 第二个元素的索引
     """
-    if i is not j: # 避免i和j在同一个地址导致结果为0
+    if arr[i] is not arr[j]: # 避免i和j在同一个地址导致结果为0
         arr[i] = arr[i] ^ arr[j]
         arr[j] = arr[i] ^ arr[j]
         arr[i] = arr[i] ^ arr[j]

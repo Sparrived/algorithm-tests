@@ -10,7 +10,16 @@ https://upload.wikimedia.org/wikipedia/commons/thumb/e/ea/Insertion_sort_001.PNG
 时间复杂度： O(n^2)，额外空间复杂度： O(1)
 """
 
+from pathlib import Path
+import sys
+
+if __package__ in {None, ""}:  # 允许脚本独立运行
+    project_root = Path(__file__).resolve().parents[1]
+    if str(project_root) not in sys.path:
+        sys.path.insert(0, str(project_root))
+
 from utils import *
+
 
 def insertion_sort(arr: list) -> list:
     """插入排序算法, 将数组按升序排序，返回排序后的数组的副本
@@ -35,6 +44,7 @@ def insertion_sort(arr: list) -> list:
         arr_copy[j + 1] = key
     return arr_copy
 
+
 def viewed_insertion_sort(arr: list) -> list:
     """插入排序算法的可视化版本, 将数组按升序排序，返回排序后的数组的副本
 
@@ -58,6 +68,19 @@ def viewed_insertion_sort(arr: list) -> list:
         print(f"Step {i}: {arr_copy}")
     return arr_copy
 
+@time_mixin
+def insertion_sort_with_mixin(arr: list) -> list:
+    """带有时间统计的插入排序算法包装器"""
+    return insertion_sort(arr)
+
+@time_mixin
+def viewed_insertion_sort_with_mixin(arr: list) -> list:
+    """带有时间统计的可视化插入排序算法包装器"""
+    return viewed_insertion_sort(arr)
+
 
 if __name__ == "__main__":
-    viewed_insertion_sort(UNSORTED_ARRAY)
+    print("=" * 20 + " Insertion Sort " + "=" * 20)
+    run_test(insertion_sort_with_mixin)
+    print("=" * 20 + " Viewed Insertion Sort " + "=" * 20)
+    run_test(viewed_insertion_sort_with_mixin, UNSORTED_ARRAY)

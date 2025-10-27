@@ -1,5 +1,6 @@
 import random
-from typing import Optional
+import time
+from typing import Callable, Optional
 
 def swap_with_bit(arr: list, i: int, j: int) -> None:
     """使用位运算交换数组中两个索引位置的元素，异或运算速度较快且不需要额外空间
@@ -42,5 +43,26 @@ def get_random_array(size: int, min_value: int, max_value: int, seed: Optional[i
     if seed is not None:
         random.seed(seed)
     return [random.randint(min_value, max_value) for _ in range(size)]
+
+
+def time_mixin(func: Callable):
+    def warpper(*args, **kwargs):
+        start_time = time.time()
+        result = func(*args, **kwargs)
+        end_time = time.time()
+        print(f"{func.__name__} Time: {end_time - start_time} seconds")
+        return result
+    return warpper
+
+
+def run_test(run_test_func: Callable, unsorted_array: Optional[list] = None):
+    unsorted_array = unsorted_array if unsorted_array else get_random_array(1000, 1, 10000)
+    run_test_func(unsorted_array)
+    sorted_with_mixin(unsorted_array)
+
+@time_mixin
+def sorted_with_mixin(arr: list) -> list:
+    """使用内置排序函数对数组进行排序，作为基准测试"""
+    return sorted(arr)
 
 UNSORTED_ARRAY = get_random_array(10, 1, 100, seed=42)

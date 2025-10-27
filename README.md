@@ -72,12 +72,17 @@ uv run sorting-algorithm/selection_sort.py
 algorithm-tests/
 ├── README.md                      # 项目说明文档
 ├── pyproject.toml                 # 项目配置文件
-└── sorting-algorithm/             # 排序算法目录
-  ├── README.md                 # 排序算法说明文档
-  ├── selection_sort.py         # 选择排序实现
-  ├── bubble_sort.py            # 冒泡排序实现
-  ├── insertion_sort.py         # 插入排序实现
-  └── utils.py                  # 工具函数
+├── sorting_algorithm/             # 排序算法目录
+│   ├── __init__.py                # 包入口
+│   ├── README.md                  # 排序算法说明文档
+│   ├── bubble_sort.py             # 冒泡排序实现
+│   ├── insertion_sort.py          # 插入排序实现
+│   └── selection_sort.py          # 选择排序实现
+├── tests/
+│   └── test_sorting_algorithm.py  # 排序算法测试用例
+└── utils/
+    ├── __init__.py
+    └── utils.py                   # 公共工具函数
 ```
 
 ## 🤝 贡献

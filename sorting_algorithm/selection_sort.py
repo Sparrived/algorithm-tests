@@ -10,6 +10,14 @@ https://upload.wikimedia.org/wikipedia/commons/9/94/Selection-Sort-Animation.gif
 时间复杂度： O(n^2)，额外空间复杂度： O(1)
 """
 
+from pathlib import Path
+import sys
+
+if __package__ in {None, ""}:  # 允许脚本独立运行
+    project_root = Path(__file__).resolve().parents[1]
+    if str(project_root) not in sys.path:
+        sys.path.insert(0, str(project_root))
+
 from utils import *
 
 
@@ -57,7 +65,18 @@ def viewed_selection_sort(arr: list) -> list:
     return arr_copy
 
 
+@time_mixin
+def selection_sort_with_mixin(arr: list) -> list:
+    """带有时间统计的选择排序算法包装器"""
+    return selection_sort(arr)
+
+@time_mixin
+def viewed_selection_sort_with_mixin(arr: list) -> list:
+    """带有时间统计的可视化选择排序算法包装器"""
+    return viewed_selection_sort(arr)
 
 if __name__ == "__main__":
-
-    sorted_array = viewed_selection_sort(UNSORTED_ARRAY)
+    print("=" * 20 + " Selection Sort " + "=" * 20)
+    run_test(selection_sort_with_mixin)
+    print("=" * 20 + " Viewed Selection Sort " + "=" * 20)
+    run_test(viewed_selection_sort_with_mixin, UNSORTED_ARRAY)

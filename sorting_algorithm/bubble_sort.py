@@ -10,6 +10,14 @@ https://upload.wikimedia.org/wikipedia/commons/thumb/0/0c/Bubble_sort_animation_
 时间复杂度： O(n^2)，额外空间复杂度： O(1)
 """
 
+from pathlib import Path
+import sys
+
+if __package__ in {None, ""}:  # 允许脚本独立运行
+    project_root = Path(__file__).resolve().parents[1]
+    if str(project_root) not in sys.path:
+        sys.path.insert(0, str(project_root))
+
 from utils import *
 
 
@@ -68,5 +76,26 @@ def optimized_bubble_sort(arr: list) -> list:
             break
     return arr_copy
 
+@time_mixin
+def bubble_sort_with_mixin(arr: list) -> list:
+    """带有时间统计的冒泡排序算法包装器"""
+    return bubble_sort(arr)
+
+@time_mixin
+def viewed_bubble_sort_with_mixin(arr: list) -> list:
+    """带有时间统计的可视化冒泡排序算法包装器"""
+    return viewed_bubble_sort(arr)
+
+@time_mixin
+def optimized_bubble_sort_with_mixin(arr: list) -> list:
+    """带有时间统计的优化后冒泡排序算法包装器"""
+    return optimized_bubble_sort(arr)
+
 if __name__ == "__main__":
-    viewed_bubble_sort(UNSORTED_ARRAY)
+    unsorted_array = get_random_array(1000, 1, 10000)
+    print("=" * 20 + " Bubble Sort " + "=" * 20)
+    run_test(bubble_sort_with_mixin, unsorted_array)
+    print("=" * 20 + " Optimized Bubble Sort " + "=" * 20)
+    run_test(optimized_bubble_sort_with_mixin, unsorted_array)
+    print("=" * 20 + " Viewed Bubble Sort " + "=" * 20)
+    run_test(viewed_bubble_sort_with_mixin, UNSORTED_ARRAY)

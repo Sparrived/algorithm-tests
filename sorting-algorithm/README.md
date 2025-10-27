@@ -11,6 +11,10 @@ print(sorted_arr)  # [11, 12, 22, 25, 64]
 
 ## 选择排序 (Selection Sort)
 
+<table>
+<tr>
+<td width="80%">
+
 **文件**: `sorting-algorithm/selection_sort.py`
 
 **算法描述**: 
@@ -47,9 +51,21 @@ print(sorted_arr)  # [11, 12, 22, 25, 64]
       ✓   ✓   ✓   ✓   ✓  (全部已排序)
 ```
 
+</td>
+<td width="20%">
+
 **动画演示**: 
-- [维基百科动画](https://upload.wikimedia.org/wikipedia/commons/9/94/Selection-Sort-Animation.gif)
-- [VisuAlgo 可视化工具](https://visualgo.net/zh/sorting)
+
+![Selection Sort Animation](https://upload.wikimedia.org/wikipedia/commons/9/94/Selection-Sort-Animation.gif)
+
+*动画来源: 维基百科*
+
+**在线工具**:
+- [VisuAlgo 可视化](https://visualgo.net/zh/sorting)
+
+</td>
+</tr>
+</table>
 
 
 **复杂度分析**:

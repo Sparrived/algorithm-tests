@@ -22,3 +22,7 @@ def test_bubble_sort(unsorted_array):
 
 def test_optimized_bubble_sort(unsorted_array):
     assert optimized_bubble_sort(unsorted_array) == sorted(unsorted_array)
+
+
+def test_merge_sort(unsorted_array):
+    assert merge_sort(unsorted_array) == sorted(unsorted_array)
